@@ -6,7 +6,7 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 15:00:43 by yboutsli          #+#    #+#             */
-/*   Updated: 2024/01/26 23:33:59 by yboutsli         ###   ########.fr       */
+/*   Updated: 2024/01/28 17:22:51 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int	arg_is_numbers(char **argv)
 int	exist_in_lst(t_stack_node **a, int nb)
 {
 	t_stack_node	*current;
-
 	current = *a;
 	while (current)
 	{
@@ -104,6 +103,7 @@ void	indexing(t_stack_node **tmp)
 	while (current)
 	{
 		current -> s_index = -1;
+		current -> moves = -1;
 		current = current -> next;
 	}
 }
@@ -127,6 +127,7 @@ void	sort_s_index(t_stack_node **tmp)
 	int				min;
 	int				len;
 
+	indexing(tmp);
 	len = lst_len(*tmp);
 	i = 0;
 	while (len)
@@ -147,7 +148,6 @@ void	sort_s_index(t_stack_node **tmp)
 	}
 }
 
-
 int	main(int argc, char **argv)
 {
 	t_stack_node	*a;
@@ -159,19 +159,22 @@ int	main(int argc, char **argv)
 		write(1, "Error\n", 6);
 		exit(EXIT_FAILURE);
 	}
-	indexing(&a);
 	sort_s_index(&a);
 	if (is_sorted(a))
 		exit(EXIT_SUCCESS);
 	if (lst_len(a) <= 3)
 		sort3(&a);
-	else if (lst_len(a) == 5)
-		sort5(&a, &b);
 	else
 	{
 		a_2_b(&a, &b);
-		sort3(&a);
 		b_2_a(&a, &b);
+		while (!is_sorted(a))
+		{
+			if (lst_len(a) / 2 <  (a)-> s_index)
+				ra(&a);
+			else
+				rra(&a);
+		}
 	}
 	if (is_sorted(a))
 		exit(EXIT_SUCCESS);

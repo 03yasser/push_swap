@@ -54,25 +54,10 @@ void sort3(t_stack_node **tmp)
 		two_func(sa,rra, tmp);
 	else if (a > b && b < c && a > c) 
 		ra(tmp);
-	else if (a < b && b > c && a < c) 
+	else if (a < b && b > c && a < c)
 		two_func(sa, ra, tmp);
 	else if (a < b && b > c && a > c)
 		rra(tmp);
 }
 
-void sort5(t_stack_node **a, t_stack_node **b)
-{
-	while (lst_len(*a) > 3)
-	{
-		if ((*a) -> s_index == 1 || (*a) -> s_index == 0)
-			pb(a, b);
-		else
-			ra(a);
-	}
-	if ((*b) -> s_index < (*b) -> next -> s_index)
-		sb(b);
-	sort3(a);
-	pa(a, b);
-	pa(a, b);
-}
 

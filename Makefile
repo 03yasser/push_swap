@@ -5,7 +5,7 @@ NAME = push_swap
 all :$(NAME)
 
 $(NAME) : $(SRCS)
-	cc $(CFLAGS) $(SRCS)  main.c  -o $(NAME)
+	cc $(SRCS)  $(CFLAGS)  main.c  -o $(NAME)
 clean:
 	rm -r $(OBJF)
 fclean:

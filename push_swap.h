@@ -6,7 +6,7 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 15:17:50 by yboutsli          #+#    #+#             */
-/*   Updated: 2024/01/26 23:33:46 by yboutsli         ###   ########.fr       */
+/*   Updated: 2024/01/28 17:14:40 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,16 @@ typedef struct s_stack_node
 {
 	int					value;
 	int 				s_index;
+	int 				moves;
+	int					ra;
+	int					rb;
+	int					rra;
+	int					rrb;
+	int					pa;
 	struct s_stack_node	*next;
 
 }	t_stack_node;
-typedef struct s_cont_opera
-{
-	int	rra;
-	int	rrb;
-	int rrr;
-}	t_cont_opera;
+
 
 char			**ft_split(char const *s, char c);
 void			ft_lstadd_back(t_stack_node **lst, t_stack_node *new);
@@ -53,20 +54,14 @@ t_stack_node	*ft_lstlast(t_stack_node *lst);
 int				is_sorted(t_stack_node	*a);
 int				max_linkedlst(int nb, t_stack_node	*lst);
 unsigned int	max_index(int nb, t_stack_node	*lst);
-void			operation(t_cont_opera **c, t_stack_node **a, t_stack_node **b);
 int				min_nb_operation(t_stack_node	*a, t_stack_node	*b);
-void			operation_execute(t_stack_node	**a, t_stack_node	**b, t_cont_opera **c);
 int				lst_len(t_stack_node	*lst);
 int				lst_max(t_stack_node	*lst);
 int				lst_min(t_stack_node	*lst);
 void			a_2_b(t_stack_node **a, t_stack_node **b);
-void			c_init(t_cont_opera **c);
-int				c_sum(t_cont_opera **c);
 void			indexing(t_stack_node **tmp);
 void			sort_s_index(t_stack_node **tmp);
 void			b_2_a(t_stack_node **a, t_stack_node **b);
 void			sort3(t_stack_node **tmp);
-void			minimilize(t_cont_opera **c, t_stack_node **a, t_stack_node **b);
-void	 		c_execute(t_cont_opera **c, t_stack_node **a, t_stack_node **b);
 void			sort5(t_stack_node **a, t_stack_node **b);
 #endif

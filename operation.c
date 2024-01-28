@@ -6,7 +6,7 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 02:15:21 by yboutsli          #+#    #+#             */
-/*   Updated: 2024/01/26 22:22:07 by yboutsli         ###   ########.fr       */
+/*   Updated: 2024/01/27 21:38:21 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void ss(t_stack_node **a, t_stack_node **b)
 }
 void pa(t_stack_node **a, t_stack_node **b)
 {
-	t_stack_node *tmp;
+	t_stack_node	*tmp;
 
 	if (*b == NULL)
 		return ;
@@ -57,7 +57,7 @@ void pa(t_stack_node **a, t_stack_node **b)
 }
 void pb(t_stack_node **a, t_stack_node **b)
 {
-	t_stack_node *tmp;
+	t_stack_node	*tmp;
 
 	if (*a == NULL)
 		return ;
