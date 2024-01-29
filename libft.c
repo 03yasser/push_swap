@@ -6,7 +6,7 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 18:29:41 by yboutsli          #+#    #+#             */
-/*   Updated: 2024/01/29 10:40:35 by yboutsli         ###   ########.fr       */
+/*   Updated: 2024/01/29 16:44:44 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,40 +39,29 @@ int	ft_atoi(const char *str)
 
 int	is_integer(const char *str)
 {
-	long long	nb;
+	long		nb;
 	int			i;
 	int			sign;
+	int			len;
 
+	len = 0;
 	i = 0;
 	sign = 1;
 	nb = 0;
-	while (str[i] == ' ')
+	while (str[i] == ' ' || str[i] == '0')
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i++] == '-')
-			sign *= -1;
+			sign = -1;
 	}
-	while (str[i] >= 48 && str[i] <= 57)
+	while (str[i] >= 48 && str[i] <= 57 )
 	{
-		nb = nb * 10 + str[i] - 48;
-		i++;
-	}
-	if (sign == -1)
-		nb = -nb;
-	if (nb > INT_MAX || nb < INT_MIN)
-		return (0);
-	else
-		return (1);
-}
-
-
-size_t	ft_strlen(char *str)
-{
-	size_t	len;
-
-	len = 0;
-	while (str[len])
+		nb = nb * 10 + str[i++] - 48;
 		len++;
-	return (len);
+	}
+	nb = nb * sign;
+	if (len > 12 || nb > INT_MAX || nb < INT_MIN)
+		return (0);
+	return (1);
 }

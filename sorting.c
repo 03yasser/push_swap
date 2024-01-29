@@ -13,15 +13,15 @@
 #include "push_swap.h"
 
 
-static void two_func(void f1(t_stack_node **), void f2(t_stack_node **), t_stack_node **a)
+static void two_func(void f1(t_node **), void f2(t_node **), t_node **a)
 {
 	f1(a);
 	f2(a);
 }
 
-int	is_sorted(t_stack_node	*a)
+int	is_sorted(t_node	*a)
 {
-	t_stack_node	*current;
+	t_node	*current;
 	int				i;
 
 	i = 0;
@@ -36,7 +36,7 @@ int	is_sorted(t_stack_node	*a)
 	return(1);
 }
 
-void sort3(t_stack_node **tmp)
+void sort3(t_node **tmp)
 {
 	int	a;
 	int	b;

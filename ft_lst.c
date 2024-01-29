@@ -6,15 +6,15 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 21:04:08 by yboutsli          #+#    #+#             */
-/*   Updated: 2024/01/28 17:20:01 by yboutsli         ###   ########.fr       */
+/*   Updated: 2024/01/29 16:37:46 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack_node	*ft_lstlast(t_stack_node *lst)
+t_node	*ft_lstlast(t_node *lst)
 {
-	t_stack_node	*p;
+	t_node	*p;
 
 	if (!lst)
 		return (NULL);
@@ -24,9 +24,9 @@ t_stack_node	*ft_lstlast(t_stack_node *lst)
 	return (p);
 }
 
-void	ft_lstadd_back(t_stack_node **lst, t_stack_node *new)
+void	ft_lstadd_back(t_node **lst, t_node *new)
 {
-	t_stack_node	*p;
+	t_node	*p;
 
 	p = NULL;
 	if (!lst || !new)
@@ -40,11 +40,11 @@ void	ft_lstadd_back(t_stack_node **lst, t_stack_node *new)
 	}
 }
 
-t_stack_node	*ft_lstnew(int value)
+t_node	*ft_lstnew(int value)
 {
-	t_stack_node	*new;
+	t_node	*new;
 
-	new = malloc(sizeof(t_stack_node));
+	new = malloc(sizeof(t_node));
 	if (!new)
 		return (NULL);
 	new->value = value;
@@ -52,10 +52,10 @@ t_stack_node	*ft_lstnew(int value)
 	return (new);
 }
 
-void	ft_lstclear(t_stack_node **lst)
+void	ft_lstclear(t_node **lst)
 {
-	t_stack_node	*p;
-	t_stack_node	*next;
+	t_node	*p;
+	t_node	*next;
 
 	if (!lst)
 		return ;
@@ -69,7 +69,7 @@ void	ft_lstclear(t_stack_node **lst)
 	*lst = NULL;
 }
 
-void	ft_lstadd_front(t_stack_node **lst, t_stack_node *new)
+void	ft_lstadd_front(t_node **lst, t_node *new)
 {
 	if (!*lst)
 	{
@@ -82,10 +82,10 @@ void	ft_lstadd_front(t_stack_node **lst, t_stack_node *new)
 	*lst = new;
 }
 
-int lst_len(t_stack_node	*lst)
+int lst_len(t_node	*lst)
 {
 	int				i;
-	t_stack_node	*current;
+	t_node	*current;
 
 	i = 0;
 	current = lst;
@@ -97,10 +97,10 @@ int lst_len(t_stack_node	*lst)
 	return (i);
 }
 
-int lst_max(t_stack_node	*lst)
+int lst_max(t_node	*lst)
 {
 	int				max;
-	t_stack_node	*current;
+	t_node	*current;
 
 	max = INT_MIN;
 	current = lst;
