@@ -6,12 +6,11 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 15:00:43 by yboutsli          #+#    #+#             */
-/*   Updated: 2024/01/29 21:02:02 by yboutsli         ###   ########.fr       */
+/*   Updated: 2024/01/29 21:45:09 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 void	indexing(t_node **tmp)
 {
