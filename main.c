@@ -6,7 +6,7 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 15:00:43 by yboutsli          #+#    #+#             */
-/*   Updated: 2024/01/28 17:22:51 by yboutsli         ###   ########.fr       */
+/*   Updated: 2024/01/29 11:49:01 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	ft_isdigit(int c)
 {
-	if (c >= 48 && c <= 57)
+	if (c >= '0' && c <= '9' || c == ' ')
 		return (1);
 	else
 		return (0);
@@ -37,12 +37,14 @@ int	arg_is_numbers(char **argv)
 		{
 			while (argv[i][j] == ' ' && argv[i][j + 1])
 				j++;
-			if (argv[i][j])
-				break ;
-			if (((argv[i][j] == '+' || argv[i][j] == '-') && argv[i][j + 1]))
+			if (((argv[i][j] == '+' || argv[i][j] == '-') && ft_isdigit(argv[i][j + 1])))
 				j++;
 			if (!ft_isdigit(argv[i][j]))
 				return (0);
+			while (argv[i][j] == ' ' && argv[i][j + 1])
+				j++;
+			if (argv[i][j] == ' ' && !argv[i][j + 1])
+				break;
 			j++;
 		}
 	}
@@ -74,13 +76,8 @@ int	stack_fill(char **argv, t_stack_node **a)
 		j = -1;
 		while (new[++j])
 		{
-			if (ft_strlen(new[j]) > 19 || ft_atoi(new[j]) > INT_MAX
-				|| ft_atoi(new[j]) < INT_MIN
-				|| !exist_in_lst(a, ft_atoi(new[j])))
-			{
-				write(1, "Error\n", 6);
-				exit(EXIT_FAILURE);
-			}
+			if (!is_integer(new[j]) || !exist_in_lst(a, ft_atoi(new[j])))
+				return (0);
 			ft_lstadd_back(a, ft_lstnew(ft_atoi(new[j])));
 			free(new[j]);
 		}
@@ -89,10 +86,6 @@ int	stack_fill(char **argv, t_stack_node **a)
 	return (1);
 }
 
-void	check(void)
-{
-	system("leaks push_swap");
-}
 
 
 void	indexing(t_stack_node **tmp)
@@ -152,11 +145,13 @@ int	main(int argc, char **argv)
 {
 	t_stack_node	*a;
 	t_stack_node	*b;
-
-	if (argc == 1 || !argv[1][0] || !arg_is_numbers(argv)
+	
+	if (argc == 1)
+		exit(1);
+	if (!argv[1][0] || !arg_is_numbers(argv)
 		|| !stack_fill(argv, &a))
 	{
-		write(1, "Error\n", 6);
+		write(2, "Error\n", 6);
 		exit(EXIT_FAILURE);
 	}
 	sort_s_index(&a);
