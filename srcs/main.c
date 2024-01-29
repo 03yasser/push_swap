@@ -6,14 +6,14 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 15:00:43 by yboutsli          #+#    #+#             */
-/*   Updated: 2024/01/29 16:36:11 by yboutsli         ###   ########.fr       */
+/*   Updated: 2024/01/29 21:02:02 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-static void	indexing(t_node **tmp)
+void	indexing(t_node **tmp)
 {
 	t_node	*current;
 
@@ -26,9 +26,9 @@ static void	indexing(t_node **tmp)
 	}
 }
 
-static void	sort_s_index(t_node **tmp)
+void	sort_s_index(t_node **tmp)
 {
-	t_node	*current;
+	t_node			*current;
 	int				i;
 	int				min;
 	int				len;
@@ -69,7 +69,7 @@ int	main(int argc, char **argv)
 	}
 	sort_s_index(&a);
 	if (is_sorted(a))
-		exit(1);
+		exit(EXIT_SUCCESS);
 	if (lst_len(a) <= 3)
 		sort3(&a);
 	else
@@ -78,5 +78,5 @@ int	main(int argc, char **argv)
 		b_2_a(&a, &b);
 	}
 	if (is_sorted(a))
-		exit(1);
+		exit(EXIT_SUCCESS);
 }

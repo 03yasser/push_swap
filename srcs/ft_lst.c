@@ -6,7 +6,7 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 21:04:08 by yboutsli          #+#    #+#             */
-/*   Updated: 2024/01/29 16:37:46 by yboutsli         ###   ########.fr       */
+/*   Updated: 2024/01/29 21:06:35 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,39 +52,9 @@ t_node	*ft_lstnew(int value)
 	return (new);
 }
 
-void	ft_lstclear(t_node **lst)
+int	lst_len(t_node	*lst)
 {
-	t_node	*p;
-	t_node	*next;
-
-	if (!lst)
-		return ;
-	p = *lst;
-	while (p)
-	{
-		next = p -> next;
-		free(p);
-		p = next;
-	}
-	*lst = NULL;
-}
-
-void	ft_lstadd_front(t_node **lst, t_node *new)
-{
-	if (!*lst)
-	{
-		*lst = new;
-		return ;
-	}
-	if (!new)
-		return ;
-	new -> next = *lst;
-	*lst = new;
-}
-
-int lst_len(t_node	*lst)
-{
-	int				i;
+	int		i;
 	t_node	*current;
 
 	i = 0;
@@ -97,9 +67,9 @@ int lst_len(t_node	*lst)
 	return (i);
 }
 
-int lst_max(t_node	*lst)
+int	lst_max(t_node	*lst)
 {
-	int				max;
+	int		max;
 	t_node	*current;
 
 	max = INT_MIN;

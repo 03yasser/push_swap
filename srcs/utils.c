@@ -6,11 +6,24 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 18:29:41 by yboutsli          #+#    #+#             */
-/*   Updated: 2024/01/29 16:44:44 by yboutsli         ###   ########.fr       */
+/*   Updated: 2024/01/29 21:06:03 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_lstadd_front(t_node **lst, t_node *new)
+{
+	if (!*lst)
+	{
+		*lst = new;
+		return ;
+	}
+	if (!new)
+		return ;
+	new -> next = *lst;
+	*lst = new;
+}
 
 int	ft_atoi(const char *str)
 {
@@ -36,7 +49,6 @@ int	ft_atoi(const char *str)
 	return ((n) * sign);
 }
 
-
 int	is_integer(const char *str)
 {
 	long		nb;
@@ -51,17 +63,26 @@ int	is_integer(const char *str)
 	while (str[i] == ' ' || str[i] == '0')
 		i++;
 	if (str[i] == '-' || str[i] == '+')
-	{
 		if (str[i++] == '-')
 			sign = -1;
-	}
-	while (str[i] >= 48 && str[i] <= 57 )
+	while (str[i] >= 48 && str[i] <= 57)
 	{
 		nb = nb * 10 + str[i++] - 48;
 		len++;
 	}
 	nb = nb * sign;
-	if (len > 12 || nb > INT_MAX || nb < INT_MIN)
+	if (len > 12 || nb > INT_MAX || nb < INT_MIN
+		|| (str[i] != ' ' && str[i] != '\0'))
 		return (0);
 	return (1);
+}
+
+size_t	ft_strlen(char *str)
+{
+	size_t	len;
+
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
 }
