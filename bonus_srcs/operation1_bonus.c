@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operation1.c                                       :+:      :+:    :+:   */
+/*   operation1_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 02:15:21 by yboutsli          #+#    #+#             */
-/*   Updated: 2024/01/30 18:30:20 by yboutsli         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:30:56 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
 
 void	sa(t_node **a)
 {
@@ -22,7 +22,6 @@ void	sa(t_node **a)
 	(*a)->next = tmp->next;
 	tmp->next = *a;
 	(*a) = tmp;
-	write(1, "sa\n", 3);
 }
 
 void	sb(t_node **b)
@@ -35,7 +34,6 @@ void	sb(t_node **b)
 	(*b)->next = tmp->next;
 	tmp->next = *b;
 	(*b) = tmp;
-	write(1, "sb\n", 3);
 }
 
 void	ss(t_node **a, t_node **b)
@@ -54,7 +52,6 @@ void	ss(t_node **a, t_node **b)
 	(*b)->next = tmp->next;
 	tmp->next = *b;
 	(*b) = tmp;
-	write(1, "ss\n", 3);
 }
 
 void	pa(t_node **a, t_node **b)
@@ -67,7 +64,6 @@ void	pa(t_node **a, t_node **b)
 	(*b) = (*b)->next;
 	tmp->next = NULL;
 	ft_lstadd_front(a, tmp);
-	write(1, "pa\n", 3);
 }
 
 void	pb(t_node **a, t_node **b)
@@ -80,7 +76,6 @@ void	pb(t_node **a, t_node **b)
 	(*a) = (*a)->next;
 	tmp->next = NULL;
 	ft_lstadd_front(b, tmp);
-	write(1, "pb\n", 3);
 }
 
 void	ra(t_node **a)
@@ -95,6 +90,5 @@ void	ra(t_node **a)
 		tmp->next = NULL;
 		last = ft_lstlast(*a);
 		last->next = tmp;
-		write(1, "ra\n", 3);
 	}
 }
