@@ -6,16 +6,23 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 15:43:20 by yboutsli          #+#    #+#             */
-/*   Updated: 2024/01/31 15:55:38 by yboutsli         ###   ########.fr       */
+/*   Updated: 2024/01/31 22:44:16 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
+#include <stdio.h>
+void check(void)
+{
+	system("leaks checker");
+}
 
 int	is_sorted(t_node *a)
 {
 	t_node	*current;
 
+	if (!a)
+		return(0);
 	current = a;
 	while (current->next)
 	{
@@ -33,23 +40,24 @@ int	main(int argc, char **argv)
 	int		i;
 	t_node	*a;
 	t_node	*b;
-
+	//atexit(check);
 	b = NULL;
 	parcing_check(argc, argv, &a);
 	str = operation_str();
 	operations = ft_split(str, '\n');
 	free(str);
 	i = 0;
+	
 	while (operations[i])
 	{
 		execute(operations[i], &a, &b);
 		free(operations[i]);
-		if (is_sorted(a) && !b)
-		{
-			write(1, "OK\n", 3);
-			exit(1);
-		}
 		i++;
+	}
+	if (is_sorted(a) && !b)
+	{
+		write(1, "OK\n", 3);
+		exit(1);
 	}
 	write(1, "KO\n", 3);
 	exit(0);

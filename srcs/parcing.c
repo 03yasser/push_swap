@@ -6,15 +6,15 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 20:46:02 by yboutsli          #+#    #+#             */
-/*   Updated: 2024/01/31 15:33:10 by yboutsli         ###   ########.fr       */
+/*   Updated: 2024/01/31 22:44:23 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+#include <stdio.h>
 static int	ft_isdigit(int c)
 {
-	if ((c >= '0' && c <= '9' ) || c == ' ')
+	if ((c >= '0' && c <= '9' ))
 		return (1);
 	else
 		return (0);
@@ -47,17 +47,23 @@ int	arg_is_numbers(char **argv)
 		j = -1;
 		while (argv[i][++j])
 		{
+			
 			while (argv[i][j] == ' ' && argv[i][j + 1])
 				j++;
-			if (((argv[i][j] == '+' || argv[i][j] == '-')
-				&& ft_isdigit(argv[i][j + 1])))
-				j++;
+			if (argv[i][j] == '+' || argv[i][j] == '-')
+			{
+				if (ft_isdigit(argv[i][j + 1]))
+					j++;
+				else
+					return (0);
+			}
+			printf("[%c]\n", argv[i][j]);
 			if (!ft_isdigit(argv[i][j]))
 				return (0);
 			while (argv[i][j] == ' ' && argv[i][j + 1])
 				j++;
-			if (argv[i][j] == ' ' && !argv[i][j + 1])
-				break ;
+			if (argv[i][j + 1] == '\0')
+				break;
 		}
 	}
 	return (1);

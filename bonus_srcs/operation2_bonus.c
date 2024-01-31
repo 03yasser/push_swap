@@ -6,7 +6,7 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 16:19:05 by yboutsli          #+#    #+#             */
-/*   Updated: 2024/01/30 18:30:39 by yboutsli         ###   ########.fr       */
+/*   Updated: 2024/01/31 17:39:59 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	rb(t_node **b)
 	t_node	*tmp;
 	t_node	*last;
 
-	if ((*b)->next != NULL)
+	if ((*b) != NULL && (*b)->next != NULL)
 	{
 		tmp = *b;
 		(*b) = (*b)->next;
