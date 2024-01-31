@@ -6,21 +6,22 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 15:10:51 by yboutsli          #+#    #+#             */
-/*   Updated: 2024/01/30 18:22:32 by yboutsli         ###   ########.fr       */
+/*   Updated: 2024/01/31 15:55:10 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_BONUS_H
 # define CHECKER_BONUS_H
 
-# include <stdio.h>
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 100
 # endif
+
 typedef struct s_stack_node
 {
 	int					value;
@@ -49,6 +50,9 @@ void	rr(t_node **a, t_node **b);
 void	rra(t_node **a);
 void	rrb(t_node **b);
 void	rrr(t_node **a, t_node **b);
-
-
+int		exist_in_lst(t_node **a, int nb);
+t_node	*ft_lstnew(int value);
+char	*operation_str(void);
+void	execute(char *str, t_node **a, t_node **b);
+void	parcing_check(int argc, char **argv, t_node **a);
 #endif

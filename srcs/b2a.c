@@ -6,7 +6,7 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 16:28:37 by yboutsli          #+#    #+#             */
-/*   Updated: 2024/01/29 21:56:06 by yboutsli         ###   ########.fr       */
+/*   Updated: 2024/01/31 15:36:11 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ static void	move_execute1(t_node **a, t_node **b, t_node **current)
 		ra(a);
 	}
 }
-
 
 static void	move_execute(t_node **a, t_node **b, int min)
 {

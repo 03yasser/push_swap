@@ -1,5 +1,5 @@
-SRCS_FILES = ft_split.c utils.c ft_lst.c sorting.c operation1.c operation2.c parcing.c a2b.c b2a.c b2a1.c main.c 
-bonus_files = checker_bonus.c get_next_line_utils.c get_next_line.c checker_utils_bonus.c ft_split_bonus.c operation2_bonus.c operation1_bonus.c
+SRCS_FILES = ft_split.c utils.c ft_lst.c sorting.c operation1.c operation2.c operation3.c parcing.c a2b.c b2a.c b2a1.c main.c 
+bonus_files = checker_bonus.c checker_utils_bonus.c checker_utils_bonus2.c ft_split_bonus.c gnl_bouns.c gnl_utils_bonus.c main.c operation1_bonus.c operation2_bonus.c operation3_bonus.c
 OBJDIR1 = object_files1
 OBJDIR2 = object_files2
 HEADER = includes/push_swap.h includes/checker_bonus.h

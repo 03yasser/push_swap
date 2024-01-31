@@ -6,7 +6,7 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 02:15:21 by yboutsli          #+#    #+#             */
-/*   Updated: 2024/01/30 18:30:56 by yboutsli         ###   ########.fr       */
+/*   Updated: 2024/01/31 15:38:08 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,19 +76,4 @@ void	pb(t_node **a, t_node **b)
 	(*a) = (*a)->next;
 	tmp->next = NULL;
 	ft_lstadd_front(b, tmp);
-}
-
-void	ra(t_node **a)
-{
-	t_node	*tmp;
-	t_node	*last;
-
-	if ((*a)->next != NULL)
-	{
-		tmp = *a;
-		(*a) = (*a)->next;
-		tmp->next = NULL;
-		last = ft_lstlast(*a);
-		last->next = tmp;
-	}
 }

@@ -6,7 +6,7 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 20:46:02 by yboutsli          #+#    #+#             */
-/*   Updated: 2024/01/30 16:49:34 by yboutsli         ###   ########.fr       */
+/*   Updated: 2024/01/31 15:33:10 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,30 +18,6 @@ static int	ft_isdigit(int c)
 		return (1);
 	else
 		return (0);
-}
-
-int	ft_atoi(const char *str)
-{
-	int	i;
-	int	n;
-	int	sign;
-
-	i = 0;
-	sign = 1;
-	n = 0;
-	while (str[i] == ' ')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i++] == '-')
-			sign *= -1;
-	}
-	while (str[i] >= 48 && str[i] <= 57)
-	{
-		n = n * 10 + str[i] - 48;
-		i++;
-	}
-	return ((n) * sign);
 }
 
 static int	exist_in_lst(t_node **a, int nb)
@@ -83,20 +59,6 @@ int	arg_is_numbers(char **argv)
 			if (argv[i][j] == ' ' && !argv[i][j + 1])
 				break ;
 		}
-	}
-	return (1);
-}
-
-static int	exist_in_lst(t_node **a, int nb)
-{
-	t_node	*current;
-
-	current = *a;
-	while (current)
-	{
-		if (current -> value == nb)
-			return (0);
-		current = current -> next;
 	}
 	return (1);
 }
