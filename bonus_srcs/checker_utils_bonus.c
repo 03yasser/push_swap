@@ -6,43 +6,22 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 15:24:28 by yboutsli          #+#    #+#             */
-/*   Updated: 2024/01/31 15:42:43 by yboutsli         ###   ########.fr       */
+/*   Updated: 2024/02/04 22:08:49 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
 
-int	is_integer(const char *str)
+int	is_integer(long nb)
 {
-	long		nb;
-	int			i;
-	int			sign;
-	int			len;
-
-	len = 0;
-	i = 0;
-	sign = 1;
-	nb = 0;
-	while (str[i] == ' ' || str[i] == '0')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-		if (str[i++] == '-')
-			sign = -1;
-	while (str[i] >= 48 && str[i] <= 57)
-	{
-		nb = nb * 10 + str[i++] - 48;
-		len++;
-	}
-	nb = nb * sign;
-	if (len > 12 || nb > INT_MAX || nb < INT_MIN
-		|| (str[i] != ' ' && str[i] != '\0'))
+	if (nb > INT_MAX || nb < INT_MIN)
 		return (0);
 	return (1);
 }
 
 static int	ft_isdigit(int c)
 {
-	if ((c >= '0' && c <= '9' ) || c == ' ')
+	if ((c >= '0' && c <= '9' ))
 		return (1);
 	else
 		return (0);
@@ -56,32 +35,32 @@ int	arg_is_numbers(char **argv)
 	i = 0;
 	while (argv[++i])
 	{
-		if (!argv[i][0])
+		if (!argv[i][0] || !nb_exist(argv[i]))
 			return (0);
 		j = -1;
 		while (argv[i][++j])
 		{
 			while (argv[i][j] == ' ' && argv[i][j + 1])
 				j++;
-			if (((argv[i][j] == '+' || argv[i][j] == '-')
-				&& ft_isdigit(argv[i][j + 1])))
-				j++;
+			if (argv[i][j] == '+' || argv[i][j] == '-')
+			{
+				if (j > 0 && argv[i][j - 1] != ' ')
+					return (0);
+				if (!ft_isdigit(argv[i][j++ + 1]))
+					return (0);
+			}
 			if (!ft_isdigit(argv[i][j]))
 				return (0);
-			while (argv[i][j] == ' ' && argv[i][j + 1])
-				j++;
-			if (argv[i][j] == ' ' && !argv[i][j + 1])
-				break ;
 		}
 	}
 	return (1);
 }
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
-	int	i;
-	int	n;
-	int	sign;
+	int		i;
+	long	n;
+	int		sign;
 
 	i = 0;
 	sign = 1;
@@ -93,7 +72,7 @@ int	ft_atoi(const char *str)
 		if (str[i++] == '-')
 			sign *= -1;
 	}
-	while (str[i] >= 48 && str[i] <= 57)
+	while (str[i] >= 48 && str[i] <= 57 && n < (long)INT_MAX + 1)
 	{
 		n = n * 10 + str[i] - 48;
 		i++;
@@ -106,6 +85,7 @@ int	stack_fill(char **argv, t_node **a)
 	int		i;
 	int		j;
 	char	**new;
+	long	tmp;
 
 	i = 0;
 	while (argv[++i])
@@ -114,9 +94,10 @@ int	stack_fill(char **argv, t_node **a)
 		j = -1;
 		while (new[++j])
 		{
-			if (!is_integer(new[j]) || !exist_in_lst(a, ft_atoi(new[j])))
+			tmp = ft_atoi(new[j]);
+			if (!is_integer(tmp) || !exist_in_lst(a, tmp))
 				return (0);
-			ft_lstadd_back(a, ft_lstnew(ft_atoi(new[j])));
+			ft_lstadd_back(a, ft_lstnew(tmp));
 			free(new[j]);
 		}
 		free(new);

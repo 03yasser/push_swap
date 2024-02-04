@@ -6,15 +6,15 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 20:46:02 by yboutsli          #+#    #+#             */
-/*   Updated: 2024/01/31 22:58:08 by yboutsli         ###   ########.fr       */
+/*   Updated: 2024/02/04 22:06:22 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
+
 static int	ft_isdigit(int c)
 {
-	if ((c >= '0' && c <= '9') || c == ' ')
+	if ((c >= '0' && c <= '9'))
 		return (1);
 	else
 		return (0);
@@ -33,12 +33,13 @@ static int	exist_in_lst(t_node **a, int nb)
 	}
 	return (1);
 }
-static int nb_exist(char *str)
+
+static int	nb_exist(char *str)
 {
 	int	i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
 		if (str[i] >= '0' && str[i] <= '9')
 			return (1);
@@ -46,6 +47,7 @@ static int nb_exist(char *str)
 	}
 	return (0);
 }
+
 int	arg_is_numbers(char **argv)
 {
 	int	i;
@@ -63,12 +65,12 @@ int	arg_is_numbers(char **argv)
 				j++;
 			if (argv[i][j] == '+' || argv[i][j] == '-')
 			{
-				if (ft_isdigit(argv[i][j + 1]))
-					j++;
-				else
+				if (j > 0 && argv[i][j - 1] != ' ')
+					return (0);
+				if (!ft_isdigit(argv[i][j++ + 1]))
 					return (0);
 			}
-			if (!ft_isdigit(argv[i][j]))
+			if (!ft_isdigit(argv[i][j]) && argv[i][j] != ' ')
 				return (0);
 		}
 	}
@@ -80,6 +82,7 @@ int	stack_fill(char **argv, t_node **a)
 	int		i;
 	int		j;
 	char	**new;
+	long	tmp;
 
 	i = 0;
 	while (argv[++i])
@@ -88,9 +91,14 @@ int	stack_fill(char **argv, t_node **a)
 		j = -1;
 		while (new[++j])
 		{
-			if (!is_integer(new[j]) || !exist_in_lst(a, ft_atoi(new[j])))
+			tmp = ft_atoi(new[j]);
+			if (!is_integer(tmp) || !exist_in_lst(a, tmp))
+			{
+				free(new[j]);
+				free(new);
 				return (0);
-			ft_lstadd_back(a, ft_lstnew(ft_atoi(new[j])));
+			}
+			ft_lstadd_back(a, ft_lstnew(tmp));
 			free(new[j]);
 		}
 		free(new);

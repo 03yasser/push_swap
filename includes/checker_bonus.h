@@ -6,7 +6,7 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 15:10:51 by yboutsli          #+#    #+#             */
-/*   Updated: 2024/01/31 15:55:10 by yboutsli         ###   ########.fr       */
+/*   Updated: 2024/02/04 22:09:32 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,5 @@ t_node	*ft_lstnew(int value);
 char	*operation_str(void);
 void	execute(char *str, t_node **a, t_node **b);
 void	parcing_check(int argc, char **argv, t_node **a);
+int		nb_exist(char *str);
 #endif

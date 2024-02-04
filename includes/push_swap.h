@@ -6,7 +6,7 @@
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 15:17:50 by yboutsli          #+#    #+#             */
-/*   Updated: 2024/01/29 21:00:55 by yboutsli         ###   ########.fr       */
+/*   Updated: 2024/02/04 22:09:44 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,11 @@ typedef struct s_stack_node
 	struct s_stack_node	*next;
 
 }	t_node;
-
-int				is_integer(const char *str);
+int				is_integer(long nb);
 char			**ft_split(char const *s, char c);
 void			ft_lstadd_back(t_node **lst, t_node *new);
 t_node			*ft_lstnew(int value);
-int				ft_atoi(const char *str);
+long			ft_atoi(const char *str);
 void			ft_lstclear(t_node **lst);
 size_t			ft_strlen(char *str);
 void			sa(t_node **a);

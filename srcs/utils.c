@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.c                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yboutsli <yboutsli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 18:29:41 by yboutsli          #+#    #+#             */
-/*   Updated: 2024/01/29 21:06:03 by yboutsli         ###   ########.fr       */
+/*   Updated: 2024/02/04 17:52:50 by yboutsli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ void	ft_lstadd_front(t_node **lst, t_node *new)
 	*lst = new;
 }
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
-	int	i;
-	int	n;
-	int	sign;
+	int		i;
+	long	n;
+	int		sign;
 
 	i = 0;
 	sign = 1;
@@ -41,7 +41,7 @@ int	ft_atoi(const char *str)
 		if (str[i++] == '-')
 			sign *= -1;
 	}
-	while (str[i] >= 48 && str[i] <= 57)
+	while (str[i] >= 48 && str[i] <= 57 && n < (long)INT_MAX + 1)
 	{
 		n = n * 10 + str[i] - 48;
 		i++;
@@ -49,30 +49,9 @@ int	ft_atoi(const char *str)
 	return ((n) * sign);
 }
 
-int	is_integer(const char *str)
+int	is_integer(long nb)
 {
-	long		nb;
-	int			i;
-	int			sign;
-	int			len;
-
-	len = 0;
-	i = 0;
-	sign = 1;
-	nb = 0;
-	while (str[i] == ' ' || str[i] == '0')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-		if (str[i++] == '-')
-			sign = -1;
-	while (str[i] >= 48 && str[i] <= 57)
-	{
-		nb = nb * 10 + str[i++] - 48;
-		len++;
-	}
-	nb = nb * sign;
-	if (len > 12 || nb > INT_MAX || nb < INT_MIN
-		|| (str[i] != ' ' && str[i] != '\0'))
+	if (nb > INT_MAX || nb < INT_MIN)
 		return (0);
 	return (1);
 }

@@ -7,16 +7,16 @@ SRCS = $(addprefix srcs/,$(SRCS_FILES))
 OBJS = $(addprefix $(OBJDIR1)/,$(notdir $(SRCS:.c=.o)))
 BSRCS = $(addprefix bonus_srcs/,$(bonus_files))
 BOBJS = $(addprefix $(OBJDIR2)/,$(notdir $(BSRCS:.c=.o)))
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror 
 NAME = push_swap
 
 all :$(NAME)
 $(NAME) : $(OBJS) 
 	cc $(CFLAGS) $^ -o $@
-$(OBJDIR1)/%.o:srcs/%.c $(HEADER)
+$(OBJDIR1)/%.o:srcs/%.c includes/push_swap.h
 	mkdir -p $(OBJDIR1)
 	$(CC) $(CFLAGS) -I ./includes -c $< -o $@
-$(OBJDIR2)/%.o:bonus_srcs/%.c $(HEADER)
+$(OBJDIR2)/%.o:bonus_srcs/%.c includes/checker_bonus.h
 	mkdir -p $(OBJDIR2)
 	$(CC) $(CFLAGS) -I ./includes -c $< -o $@
 bonus: $(BOBJS)
